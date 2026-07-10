@@ -2,107 +2,155 @@
     ViewData["Title"] = "Panel Administrador";
 }
 
-
 <div class="container mt-5">
 
-
-    <div class="text-center">
+    <div class="text-center mb-5">
 
         <h1 class="fw-bold text-danger">
-            Panel Administrador
+            Panel de Administración
         </h1>
 
-        <p class="lead">
-            Gestión general de ApliDelivery
+        <p class="lead text-muted">
+            Bienvenido al panel principal de ApliDelivery.
         </p>
 
     </div>
 
+    <!-- TARJETAS RESUMEN -->
 
+    <div class="row mb-5">
 
-    <div class="row mt-5">
+        <div class="col-md-3 mb-3">
 
+            <div class="card shadow border-0 rounded-4 text-center p-4">
 
-        <div class="col-md-4">
+                <h1>👥</h1>
 
+                <h5>Clientes</h5>
 
-            <div class="card shadow p-4 text-center">
+                <h2 class="text-danger fw-bold">250</h2>
 
-                <h4>
-                    Clientes
-                </h4>
+            </div>
 
+        </div>
 
-                <p>
+        <div class="col-md-3 mb-3">
+
+            <div class="card shadow border-0 rounded-4 text-center p-4">
+
+                <h1>📦</h1>
+
+                <h5>Pedidos</h5>
+
+                <h2 class="text-danger fw-bold">500</h2>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3 mb-3">
+
+            <div class="card shadow border-0 rounded-4 text-center p-4">
+
+                <h1>🍕</h1>
+
+                <h5>Restaurantes</h5>
+
+                <h2 class="text-danger fw-bold">40</h2>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3 mb-3">
+
+            <div class="card shadow border-0 rounded-4 text-center p-4">
+
+                <h1>💰</h1>
+
+                <h5>Ventas</h5>
+
+                <h2 class="text-danger fw-bold">$2500</h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- OPCIONES -->
+
+    <div class="row">
+
+        <div class="col-md-4 mb-4">
+
+            <div class="card shadow border-0 rounded-4 p-4 text-center">
+
+                <h2>👥</h2>
+
+                <h4>Clientes</h4>
+
+                <p class="text-muted">
                     Administrar usuarios registrados.
                 </p>
 
+                <a asp-action="Clientes"
+                   class="btn btn-danger">
 
-                <a class="btn btn-danger"
-                   asp-action="Clientes">
-
-                    Gestionar
+                    Gestionar Clientes
 
                 </a>
 
-
             </div>
-
 
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-4 mb-4">
 
+            <div class="card shadow border-0 rounded-4 p-4 text-center">
 
-            <div class="card shadow p-4 text-center">
+                <h2>👨‍💼</h2>
 
+                <h4>Administradores</h4>
 
-                <h4>
-                    Administradores
-                </h4>
-
-
-                <p>
+                <p class="text-muted">
                     Gestionar cuentas administrativas.
                 </p>
 
+                <a asp-action="Administradores"
+                   class="btn btn-danger">
 
-                <a class="btn btn-danger"
-                   asp-action="Administradores">
-
-                    Gestionar
+                    Gestionar Administradores
 
                 </a>
 
-
             </div>
-
 
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-4 mb-4">
 
+            <div class="card shadow border-0 rounded-4 p-4 text-center">
 
-            <div class="card shadow p-4 text-center">
+                <h2>📊</h2>
 
-                <h4>
-                    Reportes
-                </h4>
+                <h4>Reportes</h4>
 
-
-                <p>
-                    Revisar información del sistema.
+                <p class="text-muted">
+                    Revisar estadísticas del sistema.
                 </p>
 
+                <a asp-action="Reportes"
+                   class="btn btn-danger">
 
-                <a class="btn btn-danger"
-                   asp-controller="Administrador"
-                   asp-action="Reportes">
-
-                    Ver reportes
+                    Ver Reportes
 
                 </a>
+
             </div>
+
         </div>
+
     </div>
+
 </div>

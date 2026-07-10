@@ -2,97 +2,151 @@
     ViewData["Title"] = "Panel Cliente";
 }
 
-
 <div class="container mt-5">
 
-    <div class="text-center">
+    <div class="text-center mb-5">
 
         <h1 class="fw-bold text-danger">
-             Bienvenido a ApliDelivery
+            Bienvenido a ApliDelivery
         </h1>
 
-        <p class="lead">
+        <p class="lead text-muted">
             ¿Qué deseas hacer hoy?
         </p>
 
     </div>
 
+    <!-- TARJETAS DE RESUMEN -->
 
-    <div class="row mt-5">
+    <div class="row mb-5">
 
+        <div class="col-md-4 mb-3">
 
-        <div class="col-md-4">
-
-            <div class="card shadow p-4 text-center">
-
-                <h1>👤</h1>
-
-                <h4>
-                    Mi perfil
-                </h4>
-
-                <p>
-                    Actualiza tus datos personales.
-                </p>
-
-                <a class="btn btn-danger"
-                   asp-action="Perfil">
-                    Ver perfil
-                </a>
-
-            </div>
-
-        </div>
-
-
-
-        <div class="col-md-4">
-
-            <div class="card shadow p-4 text-center">
+            <div class="card shadow border-0 rounded-4 text-center p-4">
 
                 <h1>📦</h1>
 
-                <h4>
-                    Mis pedidos
-                </h4>
+                <h5>Pedidos realizados</h5>
 
-                <p>
-                    Revisa el estado de tus pedidos.
+                <h2 class="text-danger fw-bold">
+                    12
+                </h2>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4 mb-3">
+
+            <div class="card shadow border-0 rounded-4 text-center p-4">
+
+                <h1>🍕</h1>
+
+                <h5>Restaurantes</h5>
+
+                <h2 class="text-danger fw-bold">
+                    40
+                </h2>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4 mb-3">
+
+            <div class="card shadow border-0 rounded-4 text-center p-4">
+
+                <h1>⭐</h1>
+
+                <h5>Favoritos</h5>
+
+                <h2 class="text-danger fw-bold">
+                    6
+                </h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- OPCIONES -->
+
+    <div class="row">
+
+        <!-- PERFIL -->
+
+        <div class="col-md-4 mb-4">
+
+            <div class="card shadow border-0 rounded-4 text-center p-4">
+
+                <h1>👤</h1>
+
+                <h4>Mi Perfil</h4>
+
+                <p class="text-muted">
+                    Actualiza tu información personal.
                 </p>
 
-                <a class="btn btn-danger"
-                   asp-action="Pedidos">
-                    Ver pedidos
+                <a asp-action="Perfil"
+                   class="btn btn-danger">
+
+                    Ver Perfil
+
                 </a>
 
             </div>
 
         </div>
 
+        <!-- PEDIDOS -->
 
+        <div class="col-md-4 mb-4">
 
-        <div class="col-md-4">
+            <div class="card shadow border-0 rounded-4 text-center p-4">
 
-            <div class="card shadow p-4 text-center">
+                <h1>📦</h1>
 
-                <h1>🍔</h1>
+                <h4>Mis Pedidos</h4>
 
-                <h4>
-                    Restaurantes
-                </h4>
+                <p class="text-muted">
+                    Consulta el historial de tus pedidos.
+                </p>
 
-                <p>
-                    Explora opciones disponibles.
+                <a asp-action="Pedidos"
+                   class="btn btn-danger">
+
+                    Ver Pedidos
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- RESTAURANTES -->
+
+        <div class="col-md-4 mb-4">
+
+            <div class="card shadow border-0 rounded-4 text-center p-4">
+
+                <h1>🍕</h1>
+
+                <h4>Restaurantes</h4>
+
+                <p class="text-muted">
+                    Explora los restaurantes disponibles y realiza tu pedido.
                 </p>
 
                 <button class="btn btn-danger">
+
                     Explorar
+
                 </button>
 
             </div>
 
         </div>
-
 
     </div>
 
