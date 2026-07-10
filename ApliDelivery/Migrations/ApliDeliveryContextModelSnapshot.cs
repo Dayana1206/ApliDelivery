@@ -17,10 +17,53 @@ namespace ApliDelivery.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "9.0.9")
+                .HasAnnotation("ProductVersion", "9.0.17")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("ApliDelivery.Models.Producto", b =>
+                {
+                    b.Property<int>("ProductoId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductoId"));
+
+                    b.Property<string>("Descripcion")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Disponible")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("FechaRegistro")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Imagen")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Precio")
+                        .HasPrecision(10, 2)
+                        .HasColumnType("decimal(10,2)");
+
+                    b.Property<int>("RestauranteId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Stock")
+                        .HasColumnType("int");
+
+                    b.HasKey("ProductoId");
+
+                    b.HasIndex("RestauranteId");
+
+                    b.ToTable("Productos");
+                });
 
             modelBuilder.Entity("ApliDelivery.Models.RecuperacionPassword", b =>
                 {
@@ -43,14 +86,64 @@ namespace ApliDelivery.Migrations
                     b.Property<bool>("Usado")
                         .HasColumnType("bit");
 
-                    b.Property<int>("UsuarioIdUsuario")
-                        .HasColumnType("int");
-
                     b.HasKey("IdRecuperacionPassword");
 
-                    b.HasIndex("UsuarioIdUsuario");
+                    b.HasIndex("IdUsuario");
 
                     b.ToTable("RecuperacionesPassword");
+                });
+
+            modelBuilder.Entity("ApliDelivery.Models.Restaurante", b =>
+                {
+                    b.Property<int>("RestauranteId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RestauranteId"));
+
+                    b.Property<string>("Correo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Descripcion")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Direccion")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Estado")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("FechaRegistro")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Horario")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Imagen")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Latitud")
+                        .HasColumnType("float");
+
+                    b.Property<double>("Longitud")
+                        .HasColumnType("float");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Telefono")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("RestauranteId");
+
+                    b.ToTable("Restaurantes");
                 });
 
             modelBuilder.Entity("ApliDelivery.Models.Rol", b =>
@@ -103,25 +196,33 @@ namespace ApliDelivery.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("RolIdRol")
-                        .HasColumnType("int");
-
                     b.Property<string>("Telefono")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("IdUsuario");
 
-                    b.HasIndex("RolIdRol");
+                    b.HasIndex("IdRol");
 
                     b.ToTable("Usuarios");
+                });
+
+            modelBuilder.Entity("ApliDelivery.Models.Producto", b =>
+                {
+                    b.HasOne("ApliDelivery.Models.Restaurante", "Restaurante")
+                        .WithMany("Productos")
+                        .HasForeignKey("RestauranteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Restaurante");
                 });
 
             modelBuilder.Entity("ApliDelivery.Models.RecuperacionPassword", b =>
                 {
                     b.HasOne("ApliDelivery.Models.Usuario", "Usuario")
                         .WithMany("RecuperacionesPassword")
-                        .HasForeignKey("UsuarioIdUsuario")
+                        .HasForeignKey("IdUsuario")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -132,11 +233,16 @@ namespace ApliDelivery.Migrations
                 {
                     b.HasOne("ApliDelivery.Models.Rol", "Rol")
                         .WithMany("Usuarios")
-                        .HasForeignKey("RolIdRol")
+                        .HasForeignKey("IdRol")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Rol");
+                });
+
+            modelBuilder.Entity("ApliDelivery.Models.Restaurante", b =>
+                {
+                    b.Navigation("Productos");
                 });
 
             modelBuilder.Entity("ApliDelivery.Models.Rol", b =>

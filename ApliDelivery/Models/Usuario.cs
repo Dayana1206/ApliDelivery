@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ApliDelivery.Models
 {
@@ -21,14 +22,13 @@ namespace ApliDelivery.Models
 
         public DateTime FechaRegistro { get; set; }
 
-
-        // Relación con Rol
+        // Llave foránea
         public int IdRol { get; set; }
 
+        [ForeignKey("IdRol")]
         public Rol Rol { get; set; }
 
-
-        // Relación con RecuperacionPassword
         public ICollection<RecuperacionPassword> RecuperacionesPassword { get; set; }
+            = new List<RecuperacionPassword>();
     }
 }

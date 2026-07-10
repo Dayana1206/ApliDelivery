@@ -24,11 +24,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="DTOs\" />
 	  <Folder Include="Interfaces\" />
 	  <Folder Include="Helpers\" />
 	  <Folder Include="Email\" />
 	  <Folder Include="Maps\" />
+	  <Folder Include="Migrations\" />
 	  <Folder Include="Services\" />
 	  <Folder Include="Repositories\" />
 	</ItemGroup>

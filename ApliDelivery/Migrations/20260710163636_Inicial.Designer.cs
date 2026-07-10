@@ -11,9 +11,9 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ApliDelivery.Migrations
 {
-    [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20260709042458_InitialCreate")]
-    partial class InitialCreate
+    [DbContext(typeof(ApliDeliveryContext))]
+    [Migration("20260710163636_Inicial")]
+    partial class Inicial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -52,7 +52,8 @@ namespace ApliDelivery.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Precio")
-                        .HasColumnType("decimal(18,2)");
+                        .HasPrecision(10, 2)
+                        .HasColumnType("decimal(10,2)");
 
                     b.Property<int>("RestauranteId")
                         .HasColumnType("int");
@@ -65,6 +66,34 @@ namespace ApliDelivery.Migrations
                     b.HasIndex("RestauranteId");
 
                     b.ToTable("Productos");
+                });
+
+            modelBuilder.Entity("ApliDelivery.Models.RecuperacionPassword", b =>
+                {
+                    b.Property<int>("IdRecuperacionPassword")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdRecuperacionPassword"));
+
+                    b.Property<string>("Codigo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("FechaExpiracion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("IdUsuario")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Usado")
+                        .HasColumnType("bit");
+
+                    b.HasKey("IdRecuperacionPassword");
+
+                    b.HasIndex("IdUsuario");
+
+                    b.ToTable("RecuperacionesPassword");
                 });
 
             modelBuilder.Entity("ApliDelivery.Models.Restaurante", b =>
@@ -120,6 +149,67 @@ namespace ApliDelivery.Migrations
                     b.ToTable("Restaurantes");
                 });
 
+            modelBuilder.Entity("ApliDelivery.Models.Rol", b =>
+                {
+                    b.Property<int>("IdRol")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdRol"));
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("IdRol");
+
+                    b.ToTable("Roles");
+                });
+
+            modelBuilder.Entity("ApliDelivery.Models.Usuario", b =>
+                {
+                    b.Property<int>("IdUsuario")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdUsuario"));
+
+                    b.Property<string>("Apellido")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Correo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Estado")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("FechaRegistro")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("IdRol")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Telefono")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("IdUsuario");
+
+                    b.HasIndex("IdRol");
+
+                    b.ToTable("Usuarios");
+                });
+
             modelBuilder.Entity("ApliDelivery.Models.Producto", b =>
                 {
                     b.HasOne("ApliDelivery.Models.Restaurante", "Restaurante")
@@ -131,9 +221,41 @@ namespace ApliDelivery.Migrations
                     b.Navigation("Restaurante");
                 });
 
+            modelBuilder.Entity("ApliDelivery.Models.RecuperacionPassword", b =>
+                {
+                    b.HasOne("ApliDelivery.Models.Usuario", "Usuario")
+                        .WithMany("RecuperacionesPassword")
+                        .HasForeignKey("IdUsuario")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Usuario");
+                });
+
+            modelBuilder.Entity("ApliDelivery.Models.Usuario", b =>
+                {
+                    b.HasOne("ApliDelivery.Models.Rol", "Rol")
+                        .WithMany("Usuarios")
+                        .HasForeignKey("IdRol")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Rol");
+                });
+
             modelBuilder.Entity("ApliDelivery.Models.Restaurante", b =>
                 {
                     b.Navigation("Productos");
+                });
+
+            modelBuilder.Entity("ApliDelivery.Models.Rol", b =>
+                {
+                    b.Navigation("Usuarios");
+                });
+
+            modelBuilder.Entity("ApliDelivery.Models.Usuario", b =>
+                {
+                    b.Navigation("RecuperacionesPassword");
                 });
 #pragma warning restore 612, 618
         }

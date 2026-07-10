@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ApliDelivery.Models
 {
@@ -13,9 +14,9 @@ namespace ApliDelivery.Models
 
         public bool Usado { get; set; }
 
-
         public int IdUsuario { get; set; }
 
+        [ForeignKey("IdUsuario")]
         public Usuario Usuario { get; set; }
     }
 }

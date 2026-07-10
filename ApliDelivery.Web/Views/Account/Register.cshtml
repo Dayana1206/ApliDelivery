@@ -1,4 +1,6 @@
-﻿@{
+﻿@model ApliDelivery.Web.Models.RegistroDTO
+
+@{
     ViewData["Title"] = "Registrarse";
 }
 
@@ -26,52 +28,54 @@
 
                     </div>
 
-                    <form>
+                    <form asp-action="Register" method="post">
 
                         <div class="row">
 
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">Nombre</label>
-                                <input type="text" class="form-control" placeholder="Ingrese su nombre">
+                                <input asp-for="Nombre" class="form-control" placeholder="Ingrese su nombre" />
                             </div>
 
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">Apellido</label>
-                                <input type="text" class="form-control" placeholder="Ingrese su apellido">
+                                <input asp-for="Apellido" class="form-control" placeholder="Ingrese su apellido" />
                             </div>
 
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Correo electrónico</label>
-                            <input type="email" class="form-control" placeholder="Ingrese su correo">
+                            <input asp-for="Correo" class="form-control" placeholder="Ingrese su correo" />
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Teléfono</label>
-                            <input type="text" class="form-control" placeholder="Ingrese su teléfono">
+                            <input asp-for="Telefono" class="form-control" placeholder="Ingrese su teléfono" />
                         </div>
 
+                        <!-- Lo dejamos solo visual por ahora -->
                         <div class="mb-3">
                             <label class="form-label">Dirección</label>
-                            <input type="text" class="form-control" placeholder="Ingrese su dirección">
+                            <input type="text" class="form-control" placeholder="Ingrese su dirección" />
                         </div>
 
                         <div class="row">
 
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">Contraseña</label>
-                                <input type="password" class="form-control" placeholder="Ingrese su contraseña">
+                                <input asp-for="Password" type="password" class="form-control" placeholder="Ingrese su contraseña" />
                             </div>
 
+                            <!-- Lo dejamos solo visual por ahora -->
                             <div class="col-md-6 mb-4">
                                 <label class="form-label">Confirmar contraseña</label>
-                                <input type="password" class="form-control" placeholder="Confirme su contraseña">
+                                <input type="password" class="form-control" placeholder="Confirme su contraseña" />
                             </div>
 
                         </div>
 
-                        <button type="button" class="btn btn-danger btn-lg w-100">
+                        <button type="submit" class="btn btn-danger btn-lg w-100">
                             Registrarse
                         </button>
 

@@ -9,9 +9,9 @@ namespace ApliDelivery.Controllers
     [ApiController]
     public class RestauranteController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
+        private readonly ApliDeliveryContext _context;
 
-        public RestauranteController(ApplicationDbContext context)
+        public RestauranteController(ApliDeliveryContext context)
         {
             _context = context;
         }

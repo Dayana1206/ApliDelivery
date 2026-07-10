@@ -1,4 +1,6 @@
-﻿@{
+﻿@model ApliDelivery.Web.Models.LoginDTO
+
+@{
     ViewData["Title"] = "Iniciar Sesión";
 }
 
@@ -26,7 +28,14 @@
 
                     </div>
 
-                    <form>
+                    @if (ViewBag.Error != null)
+                    {
+                        <div class="alert alert-danger">
+                            @ViewBag.Error
+                        </div>
+                    }
+
+                    <form asp-action="Login" method="post">
 
                         <div class="mb-3">
 
@@ -34,9 +43,9 @@
                                 Correo electrónico
                             </label>
 
-                            <input type="email"
+                            <input asp-for="Correo"
                                    class="form-control form-control-lg"
-                                   placeholder="Ingrese su correo">
+                                   placeholder="Ingrese su correo" />
 
                         </div>
 
@@ -46,9 +55,10 @@
                                 Contraseña
                             </label>
 
-                            <input type="password"
+                            <input asp-for="Password"
+                                   type="password"
                                    class="form-control form-control-lg"
-                                   placeholder="Ingrese su contraseña">
+                                   placeholder="Ingrese su contraseña" />
 
                         </div>
 

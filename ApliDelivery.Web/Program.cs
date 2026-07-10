@@ -9,6 +9,9 @@ namespace ApliDelivery.Web
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
+            // Permite consumir la API
+            builder.Services.AddHttpClient();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
