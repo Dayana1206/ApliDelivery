@@ -1,0 +1,99 @@
+﻿@{
+    ViewData["Title"] = "Panel Cliente";
+}
+
+
+<div class="container mt-5">
+
+    <div class="text-center">
+
+        <h1 class="fw-bold text-danger">
+             Bienvenido a ApliDelivery
+        </h1>
+
+        <p class="lead">
+            ¿Qué deseas hacer hoy?
+        </p>
+
+    </div>
+
+
+    <div class="row mt-5">
+
+
+        <div class="col-md-4">
+
+            <div class="card shadow p-4 text-center">
+
+                <h1>👤</h1>
+
+                <h4>
+                    Mi perfil
+                </h4>
+
+                <p>
+                    Actualiza tus datos personales.
+                </p>
+
+                <a class="btn btn-danger"
+                   asp-action="Perfil">
+                    Ver perfil
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="col-md-4">
+
+            <div class="card shadow p-4 text-center">
+
+                <h1>📦</h1>
+
+                <h4>
+                    Mis pedidos
+                </h4>
+
+                <p>
+                    Revisa el estado de tus pedidos.
+                </p>
+
+                <a class="btn btn-danger"
+                   asp-action="Pedidos">
+                    Ver pedidos
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="col-md-4">
+
+            <div class="card shadow p-4 text-center">
+
+                <h1>🍔</h1>
+
+                <h4>
+                    Restaurantes
+                </h4>
+
+                <p>
+                    Explora opciones disponibles.
+                </p>
+
+                <button class="btn btn-danger">
+                    Explorar
+                </button>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>

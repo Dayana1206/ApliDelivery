@@ -1,3 +1,4 @@
 <Solution>
+  <Project Path="ApliDelivery.Web/ApliDelivery.Web.csproj" Id="81a7fcb6-df24-4bb8-a4b0-5212d6282496" />
   <Project Path="ApliDelivery/ApliDelivery.csproj" />
 </Solution>

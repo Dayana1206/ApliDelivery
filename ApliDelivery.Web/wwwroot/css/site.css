@@ -1,0 +1,45 @@
+/* Fondo general */
+body {
+    background-color: #FFF8F0;
+    font-family: 'Segoe UI', sans-serif;
+    color: #333333;
+}
+
+
+/* Tarjetas de formularios */
+.card {
+    background-color: #FFFFFF;
+    border-radius: 20px;
+}
+
+
+/* Botón principal */
+.btn-danger {
+    background-color: #FF6B35;
+    border-color: #FF6B35;
+    color: white;
+}
+
+
+    /* Efecto al pasar el mouse */
+    .btn-danger:hover {
+        background-color: #E63946;
+        border-color: #E63946;
+    }
+
+
+/* Enlaces */
+a {
+    color: #E63946;
+}
+
+
+    a:hover {
+        color: #FF6B35;
+    }
+
+
+/* Títulos */
+h1, h2 {
+    color: #E63946;
+}

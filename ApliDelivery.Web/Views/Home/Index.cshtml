@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "Inicio";
+}
+
+<div class="container mt-5">
+
+    <div class="row align-items-center">
+
+        <div class="col-md-6">
+
+            <h1 class="display-3 fw-bold text-danger">
+                 ApliDelivery
+            </h1>
+
+            <h3 class="mt-4">
+                Tu comida favorita en minutos
+            </h3>
+
+            <p class="lead mt-3">
+                Pide comida de tus restaurantes favoritos de forma rápida,
+                segura y sin salir de casa.
+            </p>
+
+            <a asp-controller="Account"
+               asp-action="Login"
+               class="btn btn-danger btn-lg me-3">
+                Iniciar sesión
+            </a>
+
+            <a asp-controller="Account"
+               asp-action="Register"
+               class="btn btn-outline-danger btn-lg">
+                Registrarse
+            </a>
+
+        </div>
+
+        <div class="col-md-6 text-center">
+
+            <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=800"
+                 class="img-fluid rounded shadow"
+                 alt="ApliDelivery comida">
+
+        </div>
+
+    </div>
+
+</div>

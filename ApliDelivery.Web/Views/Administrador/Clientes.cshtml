@@ -1,0 +1,107 @@
+﻿@{
+    ViewData["Title"] = "Gestión de Clientes";
+}
+
+
+<div class="container mt-5">
+    <div class="text-center mb-5">
+        <h1 class="fw-bold text-danger">
+            Gestión de Clientes
+        </h1>
+        <p class="text-muted">
+            Administra los usuarios registrados en ApliDelivery.
+        </p>
+    </div>
+
+    <div class="card shadow border-0">
+        <div class="card-body">
+            <div class="d-flex justify-content-between mb-4">
+                <h4>
+                    Lista de clientes
+                </h4>
+                <button class="btn btn-danger">
+                    + Nuevo cliente
+                </button>
+            </div>
+            <table class="table table-hover">
+                <thead class="table-danger">
+                    <tr>
+                        <th>
+                            ID
+                        </th>
+
+                        <th>
+                            Nombre
+                        </th>
+
+                        <th>
+                            Correo
+                        </th>
+
+                        <th>
+                            Teléfono
+                        </th>
+
+                        <th>
+                            Acciones
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            001
+                        </td>
+                        <td>
+                            Juan Pérez
+                        </td>
+                        <td>
+                            juan@gmail.com
+                        </td>
+                        <td>
+                            0999999999
+                        </td>
+                        <td>
+                            <button class="btn btn-warning btn-sm">
+                                Editar
+                            </button>
+                            <button class="btn btn-danger btn-sm">
+                                Eliminar
+                            </button>
+
+                        </td>
+                    </tr>
+                    <tr>
+
+                        <td>
+                            002
+                        </td>
+
+                        <td>
+                            María López
+                        </td>
+
+                        <td>
+                            maria@gmail.com
+                        </td>
+
+                        <td>
+                            0988888888
+                        </td>
+
+                        <td>
+
+                            <button class="btn btn-warning btn-sm">
+                                Editar
+                            </button>
+                            <button class="btn btn-danger btn-sm">
+                                Eliminar
+                            </button>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
