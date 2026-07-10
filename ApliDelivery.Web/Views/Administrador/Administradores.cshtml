@@ -1,8 +1,11 @@
 ﻿@{
     ViewData["Title"] = "Gestión de Administradores";
 }
+
 <div class="container mt-5">
+
     <div class="text-center mb-5">
+
         <h1 class="fw-bold text-danger">
             Gestión de Administradores
         </h1>
@@ -13,57 +16,47 @@
 
     </div>
 
-
-
-    <div class="card shadow border-0">
-
+    <div class="card shadow border-0 rounded-4">
 
         <div class="card-body">
 
+            <div class="d-flex justify-content-between align-items-center mb-4">
 
-            <div class="d-flex justify-content-between mb-4">
-
-
-                <h4>
+                <h4 class="mb-0">
                     Lista de administradores
                 </h4>
 
-
                 <button class="btn btn-danger">
-                    + Nuevo administrador
+                    + Nuevo Administrador
                 </button>
-
 
             </div>
 
+            <div class="mb-3">
 
+                <input type="text"
+                       class="form-control"
+                       placeholder="Buscar administrador...">
 
-            <table class="table table-hover">
+            </div>
 
+            <table class="table table-hover table-bordered align-middle text-center">
 
                 <thead class="table-danger">
 
                     <tr>
 
-                        <th>
-                            ID
-                        </th>
+                        <th>ID</th>
 
-                        <th>
-                            Nombre
-                        </th>
+                        <th>Nombre</th>
 
-                        <th>
-                            Correo
-                        </th>
+                        <th>Correo</th>
 
-                        <th>
-                            Rol
-                        </th>
+                        <th>Rol</th>
 
-                        <th>
-                            Acciones
-                        </th>
+                        <th>Estado</th>
+
+                        <th>Acciones</th>
 
                     </tr>
 
@@ -71,31 +64,31 @@
 
                 <tbody>
 
-
                     <tr>
 
+                        <td>001</td>
+
+                        <td>Carlos Gómez</td>
+
+                        <td>carlos@aplidelivery.com</td>
+
+                        <td>Administrador</td>
+
                         <td>
-                            001
+                            <span class="badge bg-success">
+                                Activo
+                            </span>
                         </td>
 
                         <td>
-                            Carlos Gómez
-                        </td>
 
-                        <td>
-                            carlos@aplidelivery.com
-                        </td>
-
-                        <td>
-                            Administrador
-                        </td>
-
-                        <td>
+                            <button class="btn btn-primary btn-sm">
+                                Ver
+                            </button>
 
                             <button class="btn btn-warning btn-sm">
                                 Editar
                             </button>
-
 
                             <button class="btn btn-danger btn-sm">
                                 Eliminar
@@ -104,30 +97,32 @@
                         </td>
 
                     </tr>
+
                     <tr>
 
+                        <td>002</td>
+
+                        <td>Ana Torres</td>
+
+                        <td>ana@aplidelivery.com</td>
+
+                        <td>Administrador</td>
+
                         <td>
-                            002
+                            <span class="badge bg-success">
+                                Activo
+                            </span>
                         </td>
 
                         <td>
-                            Ana Torres
-                        </td>
 
-                        <td>
-                            ana@aplidelivery.com
-                        </td>
-
-                        <td>
-                            Administrador
-                        </td>
-
-                        <td>
+                            <button class="btn btn-primary btn-sm">
+                                Ver
+                            </button>
 
                             <button class="btn btn-warning btn-sm">
                                 Editar
                             </button>
-
 
                             <button class="btn btn-danger btn-sm">
                                 Eliminar
@@ -136,8 +131,47 @@
                         </td>
 
                     </tr>
+
+                    <tr>
+
+                        <td>003</td>
+
+                        <td>David Morales</td>
+
+                        <td>david@aplidelivery.com</td>
+
+                        <td>Supervisor</td>
+
+                        <td>
+                            <span class="badge bg-secondary">
+                                Inactivo
+                            </span>
+                        </td>
+
+                        <td>
+
+                            <button class="btn btn-primary btn-sm">
+                                Ver
+                            </button>
+
+                            <button class="btn btn-warning btn-sm">
+                                Editar
+                            </button>
+
+                            <button class="btn btn-danger btn-sm">
+                                Eliminar
+                            </button>
+
+                        </td>
+
+                    </tr>
+
                 </tbody>
+
             </table>
+
         </div>
+
     </div>
+
 </div>

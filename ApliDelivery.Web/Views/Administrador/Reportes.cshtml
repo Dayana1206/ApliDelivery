@@ -2,9 +2,7 @@
     ViewData["Title"] = "Reportes";
 }
 
-
 <div class="container mt-5">
-
 
     <div class="text-center mb-5">
 
@@ -18,72 +16,108 @@
 
     </div>
 
-
-
+    <!-- TARJETAS -->
     <div class="row">
 
-
         <div class="col-md-3 mb-4">
-
-            <div class="card shadow border-0 text-center p-4">
-                <h4>
-                    Clientes
-                </h4>
-
-                <h2 class="text-danger">
-                    250
-                </h2>
-
+            <div class="card shadow border-0 text-center p-4 rounded-4">
+                <h1>👥</h1>
+                <h5 class="mt-2">Clientes</h5>
+                <h2 class="text-danger fw-bold">250</h2>
             </div>
-
-        </div>
-        <div class="col-md-3 mb-4">
-
-            <div class="card shadow border-0 text-center p-4">
-                <h4>
-                    Pedidos
-                </h4>
-
-                <h2 class="text-danger">
-                    500
-                </h2>
-
-            </div>
-
-        </div>
-        <div class="col-md-3 mb-4">
-
-            <div class="card shadow border-0 text-center p-4">
-                <h4>
-                    Restaurantes
-                </h4>
-
-                <h2 class="text-danger">
-                    40
-                </h2>
-
-            </div>
-
         </div>
 
         <div class="col-md-3 mb-4">
-
-            <div class="card shadow border-0 text-center p-4">
-
-                <h4>
-                    Ventas
-                </h4>
-
-                <h2 class="text-danger">
-                    $2500
-                </h2>
-
+            <div class="card shadow border-0 text-center p-4 rounded-4">
+                <h1>📦</h1>
+                <h5 class="mt-2">Pedidos</h5>
+                <h2 class="text-danger fw-bold">500</h2>
             </div>
-
         </div>
 
+        <div class="col-md-3 mb-4">
+            <div class="card shadow border-0 text-center p-4 rounded-4">
+                <h1>🍕</h1>
+                <h5 class="mt-2">Restaurantes</h5>
+                <h2 class="text-danger fw-bold">40</h2>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-4">
+            <div class="card shadow border-0 text-center p-4 rounded-4">
+                <h1>💰</h1>
+                <h5 class="mt-2">Ventas</h5>
+                <h2 class="text-danger fw-bold">$2500</h2>
+            </div>
+        </div>
 
     </div>
 
+    <!-- TABLA -->
+    <div class="card shadow border-0 rounded-4 mt-4">
+
+        <div class="card-header bg-danger text-white">
+            <h4 class="mb-0">
+                Últimos pedidos registrados
+            </h4>
+        </div>
+
+        <div class="card-body">
+
+            <table class="table table-hover table-bordered align-middle text-center">
+
+                <thead class="table-light">
+
+                    <tr>
+                        <th>ID</th>
+                        <th>Cliente</th>
+                        <th>Restaurante</th>
+                        <th>Total</th>
+                        <th>Estado</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>1</td>
+                        <td>Joel Puma</td>
+                        <td>Pizza Hut</td>
+                        <td>$18.50</td>
+                        <td><span class="badge bg-success">Entregado</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>2</td>
+                        <td>María López</td>
+                        <td>KFC</td>
+                        <td>$12.00</td>
+                        <td><span class="badge bg-warning text-dark">En camino</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>3</td>
+                        <td>Carlos Pérez</td>
+                        <td>McDonald's</td>
+                        <td>$21.30</td>
+                        <td><span class="badge bg-primary">Preparando</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>4</td>
+                        <td>Ana Torres</td>
+                        <td>Domino's Pizza</td>
+                        <td>$16.75</td>
+                        <td><span class="badge bg-success">Entregado</span></td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
 
 </div>

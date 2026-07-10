@@ -2,106 +2,176 @@
     ViewData["Title"] = "Gestión de Clientes";
 }
 
-
 <div class="container mt-5">
+
     <div class="text-center mb-5">
+
         <h1 class="fw-bold text-danger">
             Gestión de Clientes
         </h1>
+
         <p class="text-muted">
             Administra los usuarios registrados en ApliDelivery.
         </p>
+
     </div>
 
-    <div class="card shadow border-0">
+    <div class="card shadow border-0 rounded-4">
+
         <div class="card-body">
-            <div class="d-flex justify-content-between mb-4">
-                <h4>
+
+            <div class="d-flex justify-content-between align-items-center mb-4">
+
+                <h4 class="mb-0">
                     Lista de clientes
                 </h4>
+
                 <button class="btn btn-danger">
-                    + Nuevo cliente
+                    + Nuevo Cliente
                 </button>
+
             </div>
-            <table class="table table-hover">
+
+            <div class="mb-3">
+
+                <input type="text"
+                       class="form-control"
+                       placeholder="Buscar cliente por nombre o correo...">
+
+            </div>
+
+            <table class="table table-hover table-bordered align-middle text-center">
+
                 <thead class="table-danger">
+
                     <tr>
-                        <th>
-                            ID
-                        </th>
 
-                        <th>
-                            Nombre
-                        </th>
+                        <th>ID</th>
 
-                        <th>
-                            Correo
-                        </th>
+                        <th>Nombre</th>
 
-                        <th>
-                            Teléfono
-                        </th>
+                        <th>Correo</th>
 
-                        <th>
-                            Acciones
-                        </th>
+                        <th>Teléfono</th>
+
+                        <th>Estado</th>
+
+                        <th>Acciones</th>
+
                     </tr>
+
                 </thead>
+
                 <tbody>
+
                     <tr>
+
+                        <td>001</td>
+
+                        <td>Juan Pérez</td>
+
+                        <td>juan@gmail.com</td>
+
+                        <td>0999999999</td>
+
                         <td>
-                            001
+                            <span class="badge bg-success">
+                                Activo
+                            </span>
                         </td>
+
                         <td>
-                            Juan Pérez
-                        </td>
-                        <td>
-                            juan@gmail.com
-                        </td>
-                        <td>
-                            0999999999
-                        </td>
-                        <td>
+
+                            <button class="btn btn-primary btn-sm">
+                                Ver
+                            </button>
+
                             <button class="btn btn-warning btn-sm">
                                 Editar
                             </button>
+
                             <button class="btn btn-danger btn-sm">
                                 Eliminar
                             </button>
 
                         </td>
+
                     </tr>
+
                     <tr>
 
+                        <td>002</td>
+
+                        <td>María López</td>
+
+                        <td>maria@gmail.com</td>
+
+                        <td>0988888888</td>
+
                         <td>
-                            002
+                            <span class="badge bg-success">
+                                Activo
+                            </span>
                         </td>
 
                         <td>
-                            María López
-                        </td>
 
-                        <td>
-                            maria@gmail.com
-                        </td>
-
-                        <td>
-                            0988888888
-                        </td>
-
-                        <td>
+                            <button class="btn btn-primary btn-sm">
+                                Ver
+                            </button>
 
                             <button class="btn btn-warning btn-sm">
                                 Editar
                             </button>
+
                             <button class="btn btn-danger btn-sm">
                                 Eliminar
                             </button>
 
                         </td>
+
                     </tr>
+
+                    <tr>
+
+                        <td>003</td>
+
+                        <td>Carlos Ruiz</td>
+
+                        <td>carlos@gmail.com</td>
+
+                        <td>0977777777</td>
+
+                        <td>
+                            <span class="badge bg-secondary">
+                                Inactivo
+                            </span>
+                        </td>
+
+                        <td>
+
+                            <button class="btn btn-primary btn-sm">
+                                Ver
+                            </button>
+
+                            <button class="btn btn-warning btn-sm">
+                                Editar
+                            </button>
+
+                            <button class="btn btn-danger btn-sm">
+                                Eliminar
+                            </button>
+
+                        </td>
+
+                    </tr>
+
                 </tbody>
+
             </table>
+
         </div>
+
     </div>
+
 </div>

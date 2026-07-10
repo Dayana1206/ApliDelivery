@@ -43,3 +43,8 @@ a {
 h1, h2 {
     color: #E63946;
 }
+/* Ocultar el panel de instrucciones de la ruta */
+
+.leaflet-routing-container {
+    display: none !important;
+}
