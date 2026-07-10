@@ -88,7 +88,8 @@
                     Actualiza tu información personal.
                 </p>
 
-                <a asp-action="Perfil"
+                <a asp-controller="Cliente"
+                   asp-action="Perfil"
                    class="btn btn-danger">
 
                     Ver Perfil
@@ -113,7 +114,8 @@
                     Consulta el historial de tus pedidos.
                 </p>
 
-                <a asp-action="Pedidos"
+                <a asp-controller="Cliente"
+                   asp-action="Pedidos"
                    class="btn btn-danger">
 
                     Ver Pedidos
@@ -138,11 +140,13 @@
                     Explora los restaurantes disponibles y realiza tu pedido.
                 </p>
 
-                <button class="btn btn-danger">
+                <a asp-controller="Restaurante"
+                   asp-action="Index"
+                   class="btn btn-danger">
 
                     Explorar
 
-                </button>
+                </a>
 
             </div>
 

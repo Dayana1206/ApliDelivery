@@ -2,7 +2,6 @@
     ViewData["Title"] = "Mis Pedidos";
 }
 
-
 <div class="container mt-5">
 
     <div class="text-center mb-5">
@@ -12,28 +11,42 @@
         </h1>
 
         <p class="text-muted">
-            Revisa el estado de tus pedidos realizados.
+            Revisa el estado y la información de tus pedidos realizados.
         </p>
 
     </div>
 
-
     <div class="row">
-        <div class="col-md-4 mb-4">
 
-            <div class="card shadow border-0">
+        <!-- PEDIDO 1 -->
+        <div class="col-lg-4 col-md-6 mb-4">
+
+            <div class="card shadow border-0 rounded-4 h-100">
 
                 <div class="card-body">
 
-                    <h4>
-                        Pedido #001
-                    </h4>
+                    <div class="d-flex justify-content-between align-items-center">
 
-                    <hr>
+                        <h4 class="fw-bold">
+                            Pedido #001
+                        </h4>
+
+                        <span class="badge bg-warning text-dark">
+                            Preparando
+                        </span>
+
+                    </div>
+
+                    <hr />
 
                     <p>
                         <strong>Restaurante:</strong>
-                        Pizza House
+                        Pizza Hut
+                    </p>
+
+                    <p>
+                        <strong>Fecha:</strong>
+                        09/07/2026
                     </p>
 
                     <p>
@@ -41,22 +54,22 @@
                         $15.50
                     </p>
 
-                    <p>
-                        <strong>Estado:</strong>
-                        <span class="badge bg-warning text-dark">
-                            Preparando
-                        </span>
-                    </p>
-
-
-                    <a class="btn btn-danger w-100"
-                       asp-controller="Cliente"
-                       asp-action="DetallePedido">
+                    <a asp-controller="Cliente"
+                       asp-action="DetallePedido"
+                       asp-route-id="1"
+                       class="btn btn-danger w-100 mb-2">
 
                         Ver detalle
 
                     </a>
 
+                    <a asp-controller="Cliente"
+                       asp-action="Seguimiento"
+                       class="btn btn-outline-danger w-100">
+
+                        Ver seguimiento
+
+                    </a>
 
                 </div>
 
@@ -64,42 +77,58 @@
 
         </div>
 
-        <div class="col-md-4 mb-4">
+        <!-- PEDIDO 2 -->
+        <div class="col-lg-4 col-md-6 mb-4">
 
-            <div class="card shadow border-0">
+            <div class="card shadow border-0 rounded-4 h-100">
 
                 <div class="card-body">
 
-                    <h4>
-                        Pedido #002
-                    </h4>
+                    <div class="d-flex justify-content-between align-items-center">
 
-                    <hr>
+                        <h4 class="fw-bold">
+                            Pedido #002
+                        </h4>
+
+                        <span class="badge bg-info text-dark">
+                            En camino
+                        </span>
+
+                    </div>
+
+                    <hr />
 
                     <p>
                         <strong>Restaurante:</strong>
-                        Encebollado
+                        Encebollados del Norte
+                    </p>
+
+                    <p>
+                        <strong>Fecha:</strong>
+                        08/07/2026
                     </p>
 
                     <p>
                         <strong>Total:</strong>
-                        $2.50
+                        $6.50
                     </p>
 
-                    <p>
-                        <strong>Estado:</strong>
+                    <a asp-controller="Cliente"
+                       asp-action="DetallePedido"
+                       asp-route-id="2"
+                       class="btn btn-danger w-100 mb-2">
 
-                        <span class="badge bg-info">
-                            En camino
-                        </span>
-
-                    </p>
-
-
-                    <button class="btn btn-danger w-100">
                         Ver detalle
-                    </button>
 
+                    </a>
+
+                    <a asp-controller="Cliente"
+                       asp-action="Seguimiento"
+                       class="btn btn-outline-danger w-100">
+
+                        Ver seguimiento
+
+                    </a>
 
                 </div>
 
@@ -107,44 +136,50 @@
 
         </div>
 
-        <div class="col-md-4 mb-4">
+        <!-- PEDIDO 3 -->
+        <div class="col-lg-4 col-md-6 mb-4">
 
-            <div class="card shadow border-0">
+            <div class="card shadow border-0 rounded-4 h-100">
 
                 <div class="card-body">
 
-                    <h4>
-                        Pedido #003
-                    </h4>
+                    <div class="d-flex justify-content-between align-items-center">
 
-                    <hr>
+                        <h4 class="fw-bold">
+                            Pedido #003
+                        </h4>
+
+                        <span class="badge bg-success">
+                            Entregado
+                        </span>
+
+                    </div>
+
+                    <hr />
 
                     <p>
                         <strong>Restaurante:</strong>
-                        Chaulafán
+                        Sabor Oriental
                     </p>
 
+                    <p>
+                        <strong>Fecha:</strong>
+                        06/07/2026
+                    </p>
 
                     <p>
                         <strong>Total:</strong>
                         $8.50
                     </p>
 
+                    <a asp-controller="Cliente"
+                       asp-action="DetallePedido"
+                       asp-route-id="3"
+                       class="btn btn-danger w-100">
 
-                    <p>
-                        <strong>Estado:</strong>
-
-                        <span class="badge bg-success">
-                            Entregado
-                        </span>
-
-                    </p>
-
-
-                    <button class="btn btn-danger w-100">
                         Ver detalle
-                    </button>
 
+                    </a>
 
                 </div>
 
@@ -152,8 +187,6 @@
 
         </div>
 
-
     </div>
-
 
 </div>

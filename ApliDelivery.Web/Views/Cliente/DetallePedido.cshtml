@@ -2,149 +2,200 @@
     ViewData["Title"] = "Detalle del Pedido";
 }
 
-
 <div class="container mt-5">
 
-
-    <div class="text-center mb-4">
+    <div class="text-center mb-5">
 
         <h1 class="fw-bold text-danger">
             Detalle del Pedido
         </h1>
 
         <p class="text-muted">
-            Información de tu compra
+            Consulta toda la información de tu pedido.
         </p>
 
     </div>
 
-
-
     <div class="row">
 
+        <!-- Productos -->
 
-        <div class="col-md-6">
+        <div class="col-lg-6 mb-4">
 
+            <div class="card shadow border-0 rounded-4">
 
-            <div class="card shadow border-0 p-4">
+                <div class="card-body">
 
+                    <h4 class="fw-bold">
+                        Productos
+                    </h4>
 
-                <h4>
-                    Productos
-                </h4>
+                    <hr />
 
-                <hr>
+                    <table class="table">
 
+                        <thead>
 
-                <p>
-                    Pizza familiar ........ $12.00
-                </p>
+                            <tr>
 
+                                <th>Producto</th>
 
-                <p>
-                    Gaseosa ............... $2.00
-                </p>
+                                <th>Cantidad</th>
 
+                                <th>Precio</th>
 
-                <p>
-                    Papas fritas .......... $3.00
-                </p>
+                            </tr>
 
+                        </thead>
 
-                <hr>
+                        <tbody>
 
+                            <tr>
 
-                <h5>
-                    Total: $17.00
-                </h5>
+                                <td>Pizza Suprema</td>
 
+                                <td>1</td>
 
-            </div>
+                                <td>$12.99</td>
 
+                            </tr>
 
-        </div>
+                            <tr>
 
+                                <td>Gaseosa</td>
 
+                                <td>2</td>
 
+                                <td>$3.00</td>
 
-        <div class="col-md-6">
+                            </tr>
 
+                            <tr>
 
-            <div class="card shadow border-0 p-4">
+                                <td>Papas Fritas</td>
 
+                                <td>1</td>
 
-                <h4>
-                    Información
-                </h4>
+                                <td>$2.50</td>
 
+                            </tr>
 
-                <hr>
+                        </tbody>
 
+                    </table>
 
-                <p>
-                    <strong>Número:</strong>
-                    #001
-                </p>
+                    <hr />
 
+                    <h4 class="text-danger text-end">
 
-                <p>
-                    <strong>Estado:</strong>
+                        Total: $18.49
 
-                    <span class="badge bg-warning text-dark">
-                        Preparando
-                    </span>
+                    </h4>
 
-                </p>
-
-
-                <p>
-                    <strong>Dirección:</strong>
-                    Calle Principal
-                </p>
-
-
-                <p>
-                    <strong>Restaurante:</strong>
-                    Pizza House
-                </p>
-
-
-                <p>
-                    <strong>Repartidor:</strong>
-                    Pendiente
-                </p>
-
+                </div>
 
             </div>
 
-
         </div>
 
+        <!-- Información -->
+
+        <div class="col-lg-6 mb-4">
+
+            <div class="card shadow border-0 rounded-4">
+
+                <div class="card-body">
+
+                    <h4 class="fw-bold">
+                        Información del Pedido
+                    </h4>
+
+                    <hr />
+
+                    <p>
+
+                        <strong>Número:</strong>
+
+                        #001
+
+                    </p>
+
+                    <p>
+
+                        <strong>Restaurante:</strong>
+
+                        Pizza Hut
+
+                    </p>
+
+                    <p>
+
+                        <strong>Estado:</strong>
+
+                        <span class="badge bg-warning text-dark">
+
+                            Preparando
+
+                        </span>
+
+                    </p>
+
+                    <p>
+
+                        <strong>Dirección:</strong>
+
+                        Av. Mariano Acosta, Ibarra
+
+                    </p>
+
+                    <p>
+
+                        <strong>Fecha:</strong>
+
+                        09/07/2026
+
+                    </p>
+
+                    <p>
+
+                        <strong>Hora:</strong>
+
+                        19:35
+
+                    </p>
+
+                    <p>
+
+                        <strong>Repartidor:</strong>
+
+                        Carlos Pérez
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
 
     </div>
-
-
 
     <div class="text-center mt-4">
 
+        <a asp-action="Pedidos"
+           class="btn btn-secondary btn-lg">
 
-        <a class="btn btn-danger btn-lg"
-           asp-controller="Cliente"
-           asp-action="Pedidos">
-
-            Volver a pedidos
-
-        </a>
-        <a class="btn btn-success btn-lg"
-           asp-controller="Cliente"
-           asp-action="Seguimiento">
-
-            Ver seguimiento
+            Volver
 
         </a>
 
+        <a asp-action="Seguimiento"
+           class="btn btn-danger btn-lg">
+
+            Ver Seguimiento
+
+        </a>
 
     </div>
-
 
 </div>

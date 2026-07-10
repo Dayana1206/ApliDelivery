@@ -1,5 +1,146 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    ViewData["Title"] = "Menú del Restaurante";
 }
+
+<div class="container mt-5">
+
+    <div class="text-center mb-5">
+
+        <h1 class="fw-bold text-danger">
+            Menú - Pizza Hut
+        </h1>
+
+        <p class="text-muted">
+            Elige tus productos favoritos.
+        </p>
+
+    </div>
+
+    <div class="row">
+
+        <!-- Producto 1 -->
+
+        <div class="col-lg-4 col-md-6 mb-4">
+
+            <div class="card shadow border-0 rounded-4 h-100">
+
+                <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600"
+                     class="card-img-top"
+                     style="height:220px; object-fit:cover;">
+
+                <div class="card-body">
+
+                    <h4>Pizza Suprema</h4>
+
+                    <p class="text-muted">
+                        Pizza familiar con pepperoni, jamón, champiñones y queso.
+                    </p>
+
+                    <h5 class="text-danger">
+                        $12.99
+                    </h5>
+
+                    <a asp-action="Detalle"
+                       class="btn btn-outline-danger w-100 mb-2">
+
+                        Ver Detalle
+
+                    </a>
+
+                    <button class="btn btn-danger w-100">
+
+                        Agregar al carrito
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Producto 2 -->
+
+        <div class="col-lg-4 col-md-6 mb-4">
+
+            <div class="card shadow border-0 rounded-4 h-100">
+
+                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600"
+                     class="card-img-top"
+                     style="height:220px; object-fit:cover;">
+
+                <div class="card-body">
+
+                    <h4>Pizza Hawaiana</h4>
+
+                    <p class="text-muted">
+                        Jamón, piña y abundante queso mozzarella.
+                    </p>
+
+                    <h5 class="text-danger">
+                        $11.50
+                    </h5>
+
+                    <a asp-action="Detalle"
+                       class="btn btn-outline-danger w-100 mb-2">
+
+                        Ver Detalle
+
+                    </a>
+
+                    <button class="btn btn-danger w-100">
+
+                        Agregar al carrito
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Producto 3 -->
+
+        <div class="col-lg-4 col-md-6 mb-4">
+
+            <div class="card shadow border-0 rounded-4 h-100">
+
+                <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=600"
+                     class="card-img-top"
+                     style="height:220px; object-fit:cover;">
+
+                <div class="card-body">
+
+                    <h4>Hamburguesa Clásica</h4>
+
+                    <p class="text-muted">
+                        Carne de res, queso cheddar, lechuga y tomate.
+                    </p>
+
+                    <h5 class="text-danger">
+                        $8.99
+                    </h5>
+
+                    <a asp-action="Detalle"
+                       class="btn btn-outline-danger w-100 mb-2">
+
+                        Ver Detalle
+
+                    </a>
+
+                    <button class="btn btn-danger w-100">
+
+                        Agregar al carrito
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

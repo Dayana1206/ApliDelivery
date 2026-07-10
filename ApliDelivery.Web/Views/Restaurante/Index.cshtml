@@ -1,5 +1,128 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    ViewData["Title"] = "Restaurantes";
 }
+
+<div class="container mt-5">
+
+    <div class="text-center mb-5">
+
+        <h1 class="fw-bold text-danger">
+            Restaurantes Disponibles
+        </h1>
+
+        <p class="text-muted">
+            Elige tu restaurante favorito y descubre su menú.
+        </p>
+
+    </div>
+
+    <div class="row">
+
+        <!-- Restaurante 1 -->
+
+        <div class="col-lg-4 col-md-6 mb-4">
+
+            <div class="card shadow border-0 rounded-4 h-100">
+
+                <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600"
+                     class="card-img-top"
+                     style="height:220px; object-fit:cover;">
+
+                <div class="card-body">
+
+                    <h4>Pizza Hut</h4>
+
+                    <p class="text-warning">
+                        ⭐⭐⭐⭐⭐
+                    </p>
+
+                    <p class="text-muted">
+                        📍 Av. Mariano Acosta - Ibarra
+                    </p>
+
+                    <a asp-action="Menu"
+                       class="btn btn-danger w-100">
+
+                        Ver Menú
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Restaurante 2 -->
+
+        <div class="col-lg-4 col-md-6 mb-4">
+
+            <div class="card shadow border-0 rounded-4 h-100">
+
+                <img src="https://images.unsplash.com/photo-1561758033-d89a9ad46330?w=600"
+                     class="card-img-top"
+                     style="height:220px; object-fit:cover;">
+
+                <div class="card-body">
+
+                    <h4>KFC</h4>
+
+                    <p class="text-warning">
+                        ⭐⭐⭐⭐☆
+                    </p>
+
+                    <p class="text-muted">
+                        📍 Av. Atahualpa - Ibarra
+                    </p>
+
+                    <a asp-action="Menu"
+                       class="btn btn-danger w-100">
+
+                        Ver Menú
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Restaurante 3 -->
+
+        <div class="col-lg-4 col-md-6 mb-4">
+
+            <div class="card shadow border-0 rounded-4 h-100">
+
+                <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?w=600"
+                     class="card-img-top"
+                     style="height:220px; object-fit:cover;">
+
+                <div class="card-body">
+
+                    <h4>Pollo Campero</h4>
+
+                    <p class="text-warning">
+                        ⭐⭐⭐⭐⭐
+                    </p>
+
+                    <p class="text-muted">
+                        📍 Centro de Ibarra
+                    </p>
+
+                    <a asp-action="Menu"
+                       class="btn btn-danger w-100">
+
+                        Ver Menú
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

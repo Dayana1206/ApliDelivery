@@ -2,60 +2,57 @@
     ViewData["Title"] = "Mi Perfil";
 }
 
-
 <div class="container mt-5">
 
     <div class="row justify-content-center">
 
-        <div class="col-md-6">
+        <div class="col-lg-7">
 
-            <div class="card shadow-lg border-0 register-card">
+            <div class="card shadow border-0 rounded-4">
 
                 <div class="card-body p-5">
 
+                    <div class="text-center mb-5">
 
-                    <div class="text-center mb-4">
-
-                        <h1>
-                            👤
-                        </h1>
+                        <h1>👤</h1>
 
                         <h2 class="fw-bold text-danger">
                             Mi Perfil
                         </h2>
 
                         <p class="text-muted">
-                            Información personal del cliente
+                            Consulta y actualiza tu información personal.
                         </p>
 
                     </div>
 
+                    <div class="row">
 
-                    <div class="mb-3">
+                        <div class="col-md-6 mb-3">
 
-                        <label class="form-label">
-                            Nombre
-                        </label>
+                            <label class="form-label">
+                                Nombre
+                            </label>
 
-                        <input type="text"
-                               class="form-control"
-                               placeholder="Nombre del cliente">
+                            <input type="text"
+                                   class="form-control"
+                                   placeholder="Ingrese su nombre">
+
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label">
+                                Apellido
+                            </label>
+
+                            <input type="text"
+                                   class="form-control"
+                                   placeholder="Ingrese su apellido">
+
+                        </div>
 
                     </div>
-
-
-                    <div class="mb-3">
-
-                        <label class="form-label">
-                            Apellido
-                        </label>
-
-                        <input type="text"
-                               class="form-control"
-                               placeholder="Apellido del cliente">
-
-                    </div>
-
 
                     <div class="mb-3">
 
@@ -69,7 +66,6 @@
 
                     </div>
 
-
                     <div class="mb-3">
 
                         <label class="form-label">
@@ -78,12 +74,11 @@
 
                         <input type="text"
                                class="form-control"
-                               placeholder="Número telefónico">
+                               placeholder="0999999999">
 
                     </div>
 
-
-                    <div class="mb-4">
+                    <div class="mb-3">
 
                         <label class="form-label">
                             Dirección
@@ -91,18 +86,38 @@
 
                         <input type="text"
                                class="form-control"
-                               placeholder="Dirección">
+                               placeholder="Ingrese su dirección">
 
                     </div>
 
+                    <div class="mb-4">
 
-                    <button type="button"
-                            class="btn btn-danger btn-lg w-100">
+                        <label class="form-label">
+                            Nueva contraseña
+                        </label>
 
-                        Guardar cambios
+                        <input type="password"
+                               class="form-control"
+                               placeholder="********">
 
-                    </button>
+                    </div>
 
+                    <div class="d-grid gap-2">
+
+                        <button class="btn btn-danger btn-lg">
+
+                            Guardar cambios
+
+                        </button>
+
+                        <a asp-action="Index"
+                           class="btn btn-outline-secondary">
+
+                            Volver al Panel
+
+                        </a>
+
+                    </div>
 
                 </div>
 
