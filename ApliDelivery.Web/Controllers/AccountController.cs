@@ -37,7 +37,14 @@ namespace ApliDelivery.Web.Controllers
 
             using var documento = JsonDocument.Parse(resultado);
 
+            int idUsuario = documento.RootElement.GetProperty("idUsuario").GetInt32();
+            string nombre = documento.RootElement.GetProperty("nombre").GetString();
             string rol = documento.RootElement.GetProperty("rol").GetString();
+
+            // Guardar datos del usuario en Session
+            HttpContext.Session.SetInt32("IdUsuario", idUsuario);
+            HttpContext.Session.SetString("Nombre", nombre);
+            HttpContext.Session.SetString("Rol", rol);
 
             if (rol == "Administrador")
             {
@@ -47,7 +54,6 @@ namespace ApliDelivery.Web.Controllers
             return RedirectToAction("Index", "Cliente");
         }
 
-        // REGISTRO
         [HttpGet]
         public IActionResult Register()
         {
@@ -58,6 +64,15 @@ namespace ApliDelivery.Web.Controllers
         public async Task<IActionResult> Register(RegistroDTO registro)
         {
             var respuesta = await _authFacade.Register(registro);
+
+            var contenido = new StringContent(
+                json,
+                Encoding.UTF8,
+                "application/json");
+
+            var respuesta = await _httpClient.PostAsync(
+                "https://localhost:7200/api/Auth/Registro",
+                contenido);
 
             if (respuesta.IsSuccessStatusCode)
             {

@@ -9,7 +9,7 @@ namespace ApliDelivery.Web
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+            // Agregar MVC
             builder.Services.AddControllersWithViews();
 
 
@@ -20,22 +20,45 @@ namespace ApliDelivery.Web
             // Permite consumir la API
             builder.Services.AddHttpClient();
 
+            // Registrar UsuarioService
+            builder.Services.AddHttpClient<IUsuarioService, UsuarioService>();
+
+            // Registrar RestauranteService
+            builder.Services.AddHttpClient<IRestauranteService, RestauranteService>();
+
+            builder.Services.AddHttpClient<IProductoService, ProductoService>();
+
+            // Habilitar almacenamiento temporal para Session
+            builder.Services.AddDistributedMemoryCache();
+
+            // Configurar Session
+            builder.Services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
+
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
+            // Configuración de errores
             if (!app.Environment.IsDevelopment())
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
             app.UseHttpsRedirection();
+
             app.UseRouting();
+
+            // Activar Session antes de Authorization
+            app.UseSession();
 
             app.UseAuthorization();
 
             app.MapStaticAssets();
+
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}")
