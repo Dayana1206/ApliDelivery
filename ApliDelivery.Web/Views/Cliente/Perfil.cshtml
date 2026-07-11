@@ -1,4 +1,6 @@
-﻿@{
+﻿@model ApliDelivery.Web.Models.UsuarioDTO
+
+@{
     ViewData["Title"] = "Mi Perfil";
 }
 
@@ -26,98 +28,117 @@
 
                     </div>
 
-                    <div class="row">
+                    @if (ViewBag.Mensaje != null)
+                    {
+                        <div class="alert alert-success">
+                            @ViewBag.Mensaje
+                        </div>
+                    }
 
-                        <div class="col-md-6 mb-3">
+                    @if (ViewBag.Error != null)
+                    {
+                        <div class="alert alert-danger">
+                            @ViewBag.Error
+                        </div>
+                    }
 
-                            <label class="form-label">
-                                Nombre
-                            </label>
+                    <form asp-action="GuardarPerfil" method="post">
 
-                            <input type="text"
-                                   class="form-control"
-                                   placeholder="Ingrese su nombre">
+                        <div class="row">
+
+                            <div class="col-md-6 mb-3">
+
+                                <label class="form-label">
+                                    Nombre
+                                </label>
+
+                                <input asp-for="Nombre"
+                                       class="form-control"
+                                       readonly />
+
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+
+                                <label class="form-label">
+                                    Apellido
+                                </label>
+
+                                <input asp-for="Apellido"
+                                       class="form-control"
+                                       readonly />
+
+                            </div>
 
                         </div>
 
-                        <div class="col-md-6 mb-3">
+                        <div class="mb-3">
 
                             <label class="form-label">
-                                Apellido
+                                Correo electrónico
                             </label>
 
-                            <input type="text"
+                            <input asp-for="Correo"
                                    class="form-control"
-                                   placeholder="Ingrese su apellido">
+                                   readonly />
 
                         </div>
 
-                    </div>
+                        <div class="mb-3">
 
-                    <div class="mb-3">
+                            <label class="form-label">
+                                Teléfono
+                            </label>
 
-                        <label class="form-label">
-                            Correo electrónico
-                        </label>
+                            <input name="Telefono"
+                                   value="@Model.Telefono"
+                                   class="form-control" />
 
-                        <input type="email"
-                               class="form-control"
-                               placeholder="correo@email.com">
+                        </div>
 
-                    </div>
+                        <div class="mb-3">
 
-                    <div class="mb-3">
+                            <label class="form-label">
+                                Estado
+                            </label>
 
-                        <label class="form-label">
-                            Teléfono
-                        </label>
+                            <input class="form-control"
+                                   value="@(Model.Estado ? "Activo" : "Inactivo")"
+                                   readonly />
 
-                        <input type="text"
-                               class="form-control"
-                               placeholder="0999999999">
+                        </div>
 
-                    </div>
+                        <div class="mb-3">
 
-                    <div class="mb-3">
+                            <label class="form-label">
+                                Fecha de registro
+                            </label>
 
-                        <label class="form-label">
-                            Dirección
-                        </label>
+                            <input class="form-control"
+                                   value="@Model.FechaRegistro.ToString("dd/MM/yyyy")"
+                                   readonly />
 
-                        <input type="text"
-                               class="form-control"
-                               placeholder="Ingrese su dirección">
+                        </div>
 
-                    </div>
+                        <div class="d-grid gap-2">
 
-                    <div class="mb-4">
+                            <button type="submit"
+                                    class="btn btn-danger btn-lg">
 
-                        <label class="form-label">
-                            Nueva contraseña
-                        </label>
+                                Guardar cambios
 
-                        <input type="password"
-                               class="form-control"
-                               placeholder="********">
+                            </button>
 
-                    </div>
+                            <a asp-action="Index"
+                               class="btn btn-outline-secondary">
 
-                    <div class="d-grid gap-2">
+                                Volver al Panel
 
-                        <button class="btn btn-danger btn-lg">
+                            </a>
 
-                            Guardar cambios
+                        </div>
 
-                        </button>
-
-                        <a asp-action="Index"
-                           class="btn btn-outline-secondary">
-
-                            Volver al Panel
-
-                        </a>
-
-                    </div>
+                    </form>
 
                 </div>
 

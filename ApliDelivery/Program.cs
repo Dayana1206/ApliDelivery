@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
 using ApliDelivery.Data;
 
 namespace ApliDelivery
@@ -9,8 +10,14 @@ namespace ApliDelivery
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Agregar controladores
-            builder.Services.AddControllers();
+            // Agregar controladores e ignorar referencias circulares
+            builder.Services
+                .AddControllers()
+                .AddJsonOptions(options =>
+                {
+                    options.JsonSerializerOptions.ReferenceHandler =
+                        ReferenceHandler.IgnoreCycles;
+                });
 
             // Conexión con SQL Server
             builder.Services.AddDbContext<ApliDeliveryContext>(options =>
@@ -24,14 +31,12 @@ namespace ApliDelivery
 
             var app = builder.Build();
 
-
             // Swagger en desarrollo
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-
 
             app.UseHttpsRedirection();
 

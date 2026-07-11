@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using ApliDelivery.Data;
 using ApliDelivery.Models;
+using ApliDelivery.DTOs;
 
 namespace ApliDelivery.Controllers
 {
@@ -16,7 +17,6 @@ namespace ApliDelivery.Controllers
             _context = context;
         }
 
-
         // Obtener todos los usuarios
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Usuario>>> GetUsuarios()
@@ -25,7 +25,6 @@ namespace ApliDelivery.Controllers
                 .Include(u => u.Rol)
                 .ToListAsync();
         }
-
 
         // Obtener usuario por id
         [HttpGet("{id}")]
@@ -43,7 +42,6 @@ namespace ApliDelivery.Controllers
             return usuario;
         }
 
-
         // Crear usuario
         [HttpPost]
         public async Task<ActionResult<Usuario>> CrearUsuario(Usuario usuario)
@@ -54,23 +52,27 @@ namespace ApliDelivery.Controllers
             return Ok(usuario);
         }
 
-
         // Actualizar usuario
         [HttpPut("{id}")]
-        public async Task<IActionResult> ActualizarUsuario(int id, Usuario usuario)
+        public async Task<IActionResult> ActualizarUsuario(int id, ActualizarUsuarioDTO datos)
         {
-            if (id != usuario.IdUsuario)
+            var usuario = await _context.Usuarios.FindAsync(id);
+
+            if (usuario == null)
             {
-                return BadRequest();
+                return NotFound();
             }
 
-            _context.Entry(usuario).State = EntityState.Modified;
+            // Solo actualizar los campos permitidos
+            usuario.Telefono = datos.Telefono;
 
             await _context.SaveChangesAsync();
 
-            return NoContent();
+            return Ok(new
+            {
+                mensaje = "Perfil actualizado correctamente."
+            });
         }
-
 
         // Eliminar usuario
         [HttpDelete("{id}")]

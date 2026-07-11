@@ -1,0 +1,81 @@
+﻿@model List<ApliDelivery.Web.Models.RestauranteDTO>
+
+@{
+    ViewData["Title"] = "Restaurantes";
+}
+
+<div class="container mt-5">
+
+    <div class="text-center mb-5">
+
+        <h2 class="fw-bold text-danger">
+            🍽 Restaurantes Disponibles
+        </h2>
+
+        <p class="text-muted">
+            Selecciona un restaurante para ver su menú.
+        </p>
+
+    </div>
+
+    <div class="row">
+
+        @if (Model != null && Model.Any())
+        {
+            foreach (var restaurante in Model)
+            {
+                <div class="col-md-4 mb-4">
+
+                    <div class="card shadow h-100">
+
+                        <div class="card-body">
+
+                            <h4 class="text-danger fw-bold">
+                                @restaurante.Nombre
+                            </h4>
+
+                            <p>
+                                @restaurante.Descripcion
+                            </p>
+
+                            <p>
+                                <strong>📍 Dirección:</strong><br />
+                                @restaurante.Direccion
+                            </p>
+
+                            <p>
+                                <strong>🕒 Horario:</strong><br />
+                                @restaurante.Horario
+                            </p>
+
+                        </div>
+
+                        <div class="card-footer bg-white border-0">
+
+                            <a asp-action="Menu"
+                               asp-route-restauranteId="@restaurante.RestauranteId"
+                               class="btn btn-danger w-100">
+
+                                Ver Menú
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            }
+        }
+        else
+        {
+            <div class="alert alert-warning">
+
+                No existen restaurantes registrados.
+
+            </div>
+        }
+
+    </div>
+
+</div>
