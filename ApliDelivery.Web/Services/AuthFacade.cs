@@ -4,6 +4,8 @@ using ApliDelivery.Web.Models;
 
 namespace ApliDelivery.Web.Services
 {
+    // Patrón de diseño Facade
+    // Centraliza todas las operaciones de autenticación
     public class AuthFacade : IAuthFacade
     {
         private readonly HttpClient _httpClient;

@@ -8,6 +8,7 @@ namespace ApliDelivery.Web.Controllers
     public class AccountController : Controller
     {
         // Patrón Facade
+        // Utiliza el patrón Facade para acceder a la API
         private readonly IAuthFacade _authFacade;
 
         public AccountController(IAuthFacade authFacade)
@@ -41,7 +42,7 @@ namespace ApliDelivery.Web.Controllers
             string nombre = documento.RootElement.GetProperty("nombre").GetString();
             string rol = documento.RootElement.GetProperty("rol").GetString();
 
-            // Guardar datos del usuario en Session
+            // Guardar datos en Session
             HttpContext.Session.SetInt32("IdUsuario", idUsuario);
             HttpContext.Session.SetString("Nombre", nombre);
             HttpContext.Session.SetString("Rol", rol);
@@ -54,6 +55,7 @@ namespace ApliDelivery.Web.Controllers
             return RedirectToAction("Index", "Cliente");
         }
 
+        // REGISTRO
         [HttpGet]
         public IActionResult Register()
         {
@@ -65,15 +67,6 @@ namespace ApliDelivery.Web.Controllers
         {
             var respuesta = await _authFacade.Register(registro);
 
-            var contenido = new StringContent(
-                json,
-                Encoding.UTF8,
-                "application/json");
-
-            var respuesta = await _httpClient.PostAsync(
-                "https://localhost:7200/api/Auth/Registro",
-                contenido);
-
             if (respuesta.IsSuccessStatusCode)
             {
                 return RedirectToAction("Login");
@@ -83,7 +76,6 @@ namespace ApliDelivery.Web.Controllers
 
             return View(registro);
         }
-
         // RECUPERAR CONTRASEÑA
         [HttpGet]
         public IActionResult ForgotPassword()
@@ -132,10 +124,22 @@ namespace ApliDelivery.Web.Controllers
             if (!respuesta.IsSuccessStatusCode)
             {
                 ViewBag.Error = "No fue posible cambiar la contraseña.";
+                ViewBag.Correo = correo;
+                ViewBag.MostrarCambio = true;
+
                 return View("ForgotPassword");
             }
 
             TempData["Mensaje"] = "Contraseña actualizada correctamente.";
+
+            return RedirectToAction("Login");
+        }
+
+        // CERRAR SESIÓN
+
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
 
             return RedirectToAction("Login");
         }
