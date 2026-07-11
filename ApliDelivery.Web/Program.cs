@@ -20,7 +20,12 @@ namespace ApliDelivery.Web
             // Registrar RestauranteService
             builder.Services.AddHttpClient<IRestauranteService, RestauranteService>();
 
+            // Registrar ProductoService
             builder.Services.AddHttpClient<IProductoService, ProductoService>();
+
+            // Registrar CarritoService
+            builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            builder.Services.AddScoped<ICarritoService, CarritoService>();
 
             // Habilitar almacenamiento temporal para Session
             builder.Services.AddDistributedMemoryCache();

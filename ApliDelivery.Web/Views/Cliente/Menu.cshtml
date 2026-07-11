@@ -6,45 +6,57 @@
 
 <div class="container mt-5">
 
+    @if (TempData["Mensaje"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["Mensaje"]
+        </div>
+    }
+
     <div class="text-center mb-5">
 
         <h2 class="fw-bold text-danger">
             🍽 Menú del Restaurante
         </h2>
 
-        <p class="text-muted">
-            Selecciona los productos que deseas pedir.
-        </p>
-
     </div>
 
     <div class="row">
 
-        @if (Model != null && Model.Any())
+        @foreach (var producto in Model)
         {
-            foreach (var producto in Model)
-            {
-                <div class="col-md-4 mb-4">
+            <div class="col-md-4 mb-4">
 
-                    <div class="card shadow h-100">
+                <div class="card shadow h-100">
 
-                        <div class="card-body">
+                    <div class="card-body">
 
-                            <h4 class="text-danger">
-                                @producto.Nombre
-                            </h4>
+                        <h4 class="text-danger">
+                            @producto.Nombre
+                        </h4>
 
-                            <p>
-                                @producto.Descripcion
-                            </p>
+                        <p>
+                            @producto.Descripcion
+                        </p>
 
-                            <h5 class="fw-bold">
-                                $ @producto.Precio
-                            </h5>
+                        <h5>
+                            $ @producto.Precio
+                        </h5>
 
-                        </div>
+                    </div>
 
-                        <div class="card-footer bg-white border-0">
+                    <div class="card-footer bg-white">
+
+                        <form asp-action="AgregarAlCarrito"
+                              method="post">
+
+                            <input type="hidden"
+                                   name="productoId"
+                                   value="@producto.ProductoId" />
+
+                            <input type="hidden"
+                                   name="restauranteId"
+                                   value="@producto.RestauranteId" />
 
                             <button class="btn btn-success w-100">
 
@@ -52,29 +64,33 @@
 
                             </button>
 
-                        </div>
+                        </form>
 
                     </div>
 
                 </div>
-            }
-        }
-        else
-        {
-            <div class="alert alert-warning">
-
-                Este restaurante no tiene productos registrados.
 
             </div>
         }
 
     </div>
 
-    <a asp-action="Restaurantes"
-       class="btn btn-secondary mt-3">
+    <div class="d-flex justify-content-between mt-4">
 
-        ← Volver
+        <a asp-action="Restaurantes"
+           class="btn btn-secondary">
 
-    </a>
+            ← Volver
+
+        </a>
+
+        <a asp-action="Carrito"
+           class="btn btn-warning">
+
+            🛒 Ver Carrito
+
+        </a>
+
+    </div>
 
 </div>

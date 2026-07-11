@@ -1,4 +1,6 @@
-﻿@{
+﻿@model ApliDelivery.Web.Models.PedidoDTO
+
+@{
     ViewData["Title"] = "Detalle del Pedido";
 }
 
@@ -10,25 +12,17 @@
             Detalle del Pedido
         </h1>
 
-        <p class="text-muted">
-            Consulta toda la información de tu pedido.
-        </p>
-
     </div>
 
     <div class="row">
 
-        <!-- Productos -->
+        <div class="col-lg-7">
 
-        <div class="col-lg-6 mb-4">
-
-            <div class="card shadow border-0 rounded-4">
+            <div class="card shadow">
 
                 <div class="card-body">
 
-                    <h4 class="fw-bold">
-                        Productos
-                    </h4>
+                    <h4>Productos</h4>
 
                     <hr />
 
@@ -44,41 +38,28 @@
 
                                 <th>Precio</th>
 
+                                <th>Subtotal</th>
+
                             </tr>
 
                         </thead>
 
                         <tbody>
 
-                            <tr>
+                            @foreach (var item in Model.Productos)
+                            {
+                                <tr>
 
-                                <td>Pizza Suprema</td>
+                                    <td>@item.Nombre</td>
 
-                                <td>1</td>
+                                    <td>@item.Cantidad</td>
 
-                                <td>$12.99</td>
+                                    <td>$ @item.Precio</td>
 
-                            </tr>
+                                    <td>$ @item.Subtotal</td>
 
-                            <tr>
-
-                                <td>Gaseosa</td>
-
-                                <td>2</td>
-
-                                <td>$3.00</td>
-
-                            </tr>
-
-                            <tr>
-
-                                <td>Papas Fritas</td>
-
-                                <td>1</td>
-
-                                <td>$2.50</td>
-
-                            </tr>
+                                </tr>
+                            }
 
                         </tbody>
 
@@ -86,9 +67,9 @@
 
                     <hr />
 
-                    <h4 class="text-danger text-end">
+                    <h4 class="text-end text-danger">
 
-                        Total: $18.49
+                        Total: $ @Model.Total
 
                     </h4>
 
@@ -98,53 +79,21 @@
 
         </div>
 
-        <!-- Información -->
+        <div class="col-lg-5">
 
-        <div class="col-lg-6 mb-4">
-
-            <div class="card shadow border-0 rounded-4">
+            <div class="card shadow">
 
                 <div class="card-body">
 
-                    <h4 class="fw-bold">
-                        Información del Pedido
-                    </h4>
+                    <h4>Información</h4>
 
                     <hr />
 
                     <p>
 
-                        <strong>Número:</strong>
+                        <strong>Pedido:</strong>
 
-                        #001
-
-                    </p>
-
-                    <p>
-
-                        <strong>Restaurante:</strong>
-
-                        Pizza Hut
-
-                    </p>
-
-                    <p>
-
-                        <strong>Estado:</strong>
-
-                        <span class="badge bg-warning text-dark">
-
-                            Preparando
-
-                        </span>
-
-                    </p>
-
-                    <p>
-
-                        <strong>Dirección:</strong>
-
-                        Av. Mariano Acosta, Ibarra
+                        #@Model.PedidoId
 
                     </p>
 
@@ -152,23 +101,19 @@
 
                         <strong>Fecha:</strong>
 
-                        09/07/2026
+                        @Model.Fecha.ToString("dd/MM/yyyy HH:mm")
 
                     </p>
 
                     <p>
 
-                        <strong>Hora:</strong>
+                        <strong>Estado:</strong>
 
-                        19:35
+                        <span class="badge bg-warning">
 
-                    </p>
+                            @Model.Estado
 
-                    <p>
-
-                        <strong>Repartidor:</strong>
-
-                        Carlos Pérez
+                        </span>
 
                     </p>
 
@@ -180,19 +125,12 @@
 
     </div>
 
-    <div class="text-center mt-4">
+    <div class="mt-4">
 
         <a asp-action="Pedidos"
-           class="btn btn-secondary btn-lg">
+           class="btn btn-secondary">
 
-            Volver
-
-        </a>
-
-        <a asp-action="Seguimiento"
-           class="btn btn-danger btn-lg">
-
-            Ver Seguimiento
+            ← Volver
 
         </a>
 

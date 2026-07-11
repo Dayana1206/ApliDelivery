@@ -1,4 +1,6 @@
-﻿@{
+﻿@model ApliDelivery.Web.Models.PedidoDTO
+
+@{
     ViewData["Title"] = "Seguimiento del Pedido";
 }
 
@@ -69,7 +71,7 @@
 
                     <p><strong>Restaurante:</strong> Pizza Hut</p>
 
-                    <p><strong>Cliente:</strong> Joel Puma</p>
+                    <p><strong>Cliente:</strong> @Model.Cliente</p>
 
                     <p><strong>Repartidor:</strong> Carlos Pérez</p>
 

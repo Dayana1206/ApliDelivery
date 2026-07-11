@@ -1,0 +1,132 @@
+﻿@model List<ApliDelivery.Web.Models.CarritoItemDTO>
+
+@{
+    ViewData["Title"] = "Carrito";
+}
+
+<div class="container mt-5">
+
+    <h2 class="text-danger fw-bold mb-4">
+        🛒 Mi Carrito
+    </h2>
+
+    @if (TempData["PedidoConfirmado"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["PedidoConfirmado"]
+        </div>
+    }
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-warning">
+
+            El carrito está vacío.
+
+        </div>
+    }
+    else
+    {
+        <table class="table table-bordered">
+
+            <thead class="table-dark">
+
+                <tr>
+
+                    <th>Producto</th>
+
+                    <th>Precio</th>
+
+                    <th>Cantidad</th>
+
+                    <th>Subtotal</th>
+
+                    <th></th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+
+                        <td>@item.Nombre</td>
+
+                        <td>$ @item.Precio</td>
+
+                        <td>@item.Cantidad</td>
+
+                        <td>$ @item.Subtotal</td>
+
+                        <td>
+
+                            <form asp-action="EliminarDelCarrito"
+                                  method="post">
+
+                                <input type="hidden"
+                                       name="productoId"
+                                       value="@item.ProductoId" />
+
+                                <button class="btn btn-danger btn-sm">
+
+                                    Eliminar
+
+                                </button>
+
+                            </form>
+
+                        </td>
+
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+
+        <h4 class="text-end">
+
+            Total:
+
+            <strong>
+
+                $ @Model.Sum(x => x.Subtotal)
+
+            </strong>
+
+        </h4>
+
+        <div class="mt-4">
+
+            <form asp-action="VaciarCarrito"
+                  method="post">
+
+                <button class="btn btn-warning">
+
+                    Vaciar carrito
+
+                </button>
+
+            </form>
+
+            <br />
+
+            <form asp-action="ConfirmarPedido"
+                  method="post">
+
+                <button class="btn btn-success">
+
+                    Confirmar pedido
+
+                </button>
+
+            </form>
+
+        </div>
+
+    }
+
+</div>
