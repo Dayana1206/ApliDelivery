@@ -1,5 +1,6 @@
 using ApliDelivery.Web.Services;
 
+
 namespace ApliDelivery.Web
 {
     public class Program
@@ -10,6 +11,11 @@ namespace ApliDelivery.Web
 
             // Agregar MVC
             builder.Services.AddControllersWithViews();
+
+
+            //Patrón de diseño FACADE
+            builder.Services.AddHttpClient<IAuthFacade, AuthFacade>();
+
 
             // Permite consumir la API
             builder.Services.AddHttpClient();

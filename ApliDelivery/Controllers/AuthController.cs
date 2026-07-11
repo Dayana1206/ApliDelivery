@@ -108,5 +108,100 @@ namespace ApliDelivery.Controllers
                 rol = usuario.Rol.Nombre
             });
         }
+
+        // POST: api/Auth/RecuperarPassword
+        [HttpPost("RecuperarPassword")]
+        public async Task<IActionResult> RecuperarPassword(RecuperarPasswordDTO recuperar)
+        {
+            // Buscar usuario por correo
+            var usuario = await _context.Usuarios
+                .FirstOrDefaultAsync(u => u.Correo == recuperar.Correo);
+
+            if (usuario == null)
+            {
+                return BadRequest(new
+                {
+                    mensaje = "El correo no está registrado."
+                });
+            }
+
+            // Generar código de 6 dígitos
+            Random random = new Random();
+            string codigo = random.Next(100000, 999999).ToString();
+
+            // Crear registro de recuperación
+            RecuperacionPassword recuperacion = new RecuperacionPassword
+            {
+                Codigo = codigo,
+                FechaExpiracion = DateTime.Now.AddMinutes(15),
+                Usado = false,
+                IdUsuario = usuario.IdUsuario
+            };
+
+            _context.RecuperacionesPassword.Add(recuperacion);
+
+            await _context.SaveChangesAsync();
+
+            return Ok(new
+            {
+                mensaje = "Código generado correctamente.",
+                codigo = codigo
+            });
+        }
+
+        // POST: api/Auth/CambiarPassword
+        [HttpPost("CambiarPassword")]
+        public async Task<IActionResult> CambiarPassword(CambiarPasswordDTO cambiar)
+        {
+            // Buscar usuario
+            var usuario = await _context.Usuarios
+                .FirstOrDefaultAsync(u => u.Correo == cambiar.Correo);
+
+            if (usuario == null)
+            {
+                return BadRequest(new
+                {
+                    mensaje = "El correo no existe."
+                });
+            }
+
+            // Buscar código
+            var recuperacion = await _context.RecuperacionesPassword
+                .Where(r => r.IdUsuario == usuario.IdUsuario &&
+                            r.Codigo == cambiar.Codigo &&
+                            r.Usado == false)
+                .OrderByDescending(r => r.IdRecuperacionPassword)
+                .FirstOrDefaultAsync();
+
+            if (recuperacion == null)
+            {
+                return BadRequest(new
+                {
+                    mensaje = "Código incorrecto."
+                });
+            }
+
+            // Verificar expiración
+            if (recuperacion.FechaExpiracion < DateTime.Now)
+            {
+                return BadRequest(new
+                {
+                    mensaje = "El código ha expirado."
+                });
+            }
+
+            // Cambiar contraseña
+            usuario.PasswordHash = cambiar.NuevaPassword;
+
+            // Marcar código como usado
+            recuperacion.Usado = true;
+
+            await _context.SaveChangesAsync();
+
+            return Ok(new
+            {
+                mensaje = "Contraseña actualizada correctamente."
+            });
+        }
     }
 }
